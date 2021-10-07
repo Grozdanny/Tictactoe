@@ -21,7 +21,7 @@ class Square extends React.Component {
   
     render() {
       const rowStartIndexes = [0, 3, 6];
-      const squares = Array(3).fill(null); // [null, null, ...]
+      const squares = Array(3).fill(null);
   
       return rowStartIndexes.map((rowStartIndex, arrIndex) => {
         return (
