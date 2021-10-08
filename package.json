@@ -12,16 +12,8 @@
   "scripts": {
     "start": "react-scripts start"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Grozdanny/Tictactoe.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Grozdanny/Tictactoe/issues"
-  },
-  "homepage": "https://github.com/Grozdanny/Tictactoe#readme",
   "browserslist": {
     "production": [
       ">0.2%",
