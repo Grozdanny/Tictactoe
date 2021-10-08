@@ -30,7 +30,8 @@ class Game extends React.Component {
   }
   render() {
     return <> 
-    <Board squares={this.state.squares} />;
+    <Board squares={this.state.squares} 
+    />
     </>
   }
 }
