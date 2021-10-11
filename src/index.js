@@ -6,8 +6,9 @@ class Square extends React.Component {
     super(props);
   }
   render() {
-    return <button onClick={() => {this.props.onClick();}}>{this.props.value}</button>
+    return <button onClick={() => {this.props.onClick();}}>{this.props.value || <div>&nbsp;</div>}</button>
   }
+  
 }
 
 class Board extends React.Component {
@@ -28,22 +29,64 @@ class Game extends React.Component {
     super(props);
     this.state = {
       squares: Array(9).fill(null),
-      nextSymbol: "O"
+      nextSymbol: "O",
+      gameWon: false,
     }
     this.handleSquareClick=this.handleSquareClick.bind(this)
   }
-  
-  handleSquareClick(index) {
-    const stateSquares = this.state.squares
-    stateSquares[index] = this.state.nextSymbol
-    const nextSymbol = this.state.nextSymbol === "O" ? "X" : "O";
-    this.setState ({squares: stateSquares, nextSymbol: nextSymbol})
+  checkWinning(squares) {
+    const winningCombinations = [
+      [0,1,2],
+      [3,4,5],
+      [6,7,8],
+      [0,3,6],
+      [1,4,7],
+      [2,5,8],
+      [0,4,8],
+      [2,4,6],
+    ];
+    for (let i = 0; i < winningCombinations.length; i++) {
+      let [a, b, c] = winningCombinations[i];
+
+      if (
+        (squares[a] === "X" || squares[a] === "O") &&
+        squares[a] === squares[b] &&
+        squares[a] === squares[c]
+      ) {
+        return winningCombinations[i];
+      }
     }
+  }
+
+  handleSquareClick(index) {
+    console.log(`User click ${index}`);
+    const stateSquares = this.state.squares;
+ 
+    if (stateSquares[index] !== null || this.state.gameWon) {
+      return;
+    }
+
+    stateSquares[index] = this.state.nextSymbol;
+
+    let winningCombination = this.checkWinning(stateSquares);
+    if (winningCombination) {
+      alert(`Won ${winningCombination}`); 
+      this.setState({ gameWon: true });
+    }
+
+    const nextSymbol = this.state.nextSymbol === "X" ? "O" : "X";
+    this.setState({ squares: stateSquares, nextSymbol: nextSymbol });
+  }
+
   render() {
-    return <> 
-    <Board squares={this.state.squares} handleSquareClick={this.handleSquareClick}
-    />
-    </>
+    return (
+      <Board
+        squares={this.state.squares}
+        handleSquareClick={this.handleSquareClick}
+      />
+    );
+    
   }
 }
+
 ReactDOM.render(<Game />,document.getElementById("root"))

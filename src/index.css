@@ -2,9 +2,12 @@ button {
     background-image: url(https://play-lh.googleusercontent.com/nJtqylYl_rPQJF7HBuyQCclww1W2KJg4z2pmasQfA5K1YWkqdTnLxZN2X2p4rlhczg);
     background-size: cover;
     color: crimson;
-    font-size: 40px;
+    font-size: 60px;
     border-radius: 12px;
-    height: 60px;
-    width: 60px;
+    height: 80px;
+    width: 80px;
     font-family: "Comic Sans";
+}
+#font {
+    font-size: 50px
 }
