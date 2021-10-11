@@ -16,11 +16,13 @@ class Board extends React.Component {
   }
   render() {
      return this.props.squares.map((arrayElements, index) => {
-       return <Square key={index} onClick={()=>this.props.handleSquareClick(index)} value={arrayElements} />
+       return <>
+        <Square key={index} onClick={()=>this.props.handleSquareClick(index)} value={arrayElements} />
+        {(index + 1) % 3 === 0 ? <br/> : <></>}
+      </>
      });
     }
   }
-
 class Game extends React.Component {
   constructor(props) {
     super(props);
