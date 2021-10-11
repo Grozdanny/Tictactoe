@@ -70,7 +70,7 @@ class Game extends React.Component {
 
     let winningCombination = this.checkWinning(stateSquares);
     if (winningCombination) {
-      alert(`Won ${winningCombination}`); 
+      document.write(`This combination won ${winningCombination}`); 
       this.setState({ gameWon: true });
     }
 
