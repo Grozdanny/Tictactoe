@@ -45,6 +45,7 @@ class Game extends React.Component {
       [0,4,8],
       [2,4,6],
     ];
+    
     for (let i = 0; i < winningCombinations.length; i++) {
       let [a, b, c] = winningCombinations[i];
 
@@ -57,7 +58,7 @@ class Game extends React.Component {
       }
     }
   }
-
+  
   handleSquareClick(index) {
     console.log(`User click ${index}`);
     const stateSquares = this.state.squares;
@@ -69,11 +70,10 @@ class Game extends React.Component {
     stateSquares[index] = this.state.nextSymbol;
 
     let winningCombination = this.checkWinning(stateSquares);
-    if (winningCombination) {
-      document.write(`This combination won ${winningCombination}`); 
+    if (winningCombination ) {
+      document.getElementById("win").innerHTML = `The Winner is ${stateSquares[index]}`; 
       this.setState({ gameWon: true });
-    }
-
+  }
     const nextSymbol = this.state.nextSymbol === "X" ? "O" : "X";
     this.setState({ squares: stateSquares, nextSymbol: nextSymbol });
   }
